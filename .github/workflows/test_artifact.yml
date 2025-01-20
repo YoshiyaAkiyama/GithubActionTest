@@ -1,0 +1,25 @@
+name: test_artifact
+
+on: push
+
+jobs:
+  test-artifact:
+    name: Test Artifact
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.13.1
+    - name: Create text file
+      run: |
+        output=$(python3 $GITHUB_WORKSPACE/hello_world.py)
+        echo output >> my_text.txt
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: my-first-artifact
+        path: my_text.txt
