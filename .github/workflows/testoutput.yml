@@ -1,0 +1,29 @@
+name: test-output
+
+on: push
+
+jobs:
+  test-output:
+    name: Test Output
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Install python
+      uses: actions/setup-python@v5
+      with:
+        python-version: 3.14
+    - name: Run code
+      id: run_code
+      run: |
+        $($GITHUB_WORKSPACE/hello_world.py >> $GITHUB_OUTPUT
+    - name: Test output
+      run: |
+        expected_output="Hello World"
+        actual_output="${{ steps.your_step_id.outputs.command_output }}"
+        if [[ "$actual_output" == *"$expected_output"* ]]; then
+          echo "Test passed: Output contains expected result"
+        else
+          echo "Test failed: Output does not contain expected result"
+          exit 1
+        fi
