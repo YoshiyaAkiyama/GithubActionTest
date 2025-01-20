@@ -24,7 +24,7 @@ jobs:
     - name: Test output
       run: |
         expected_output="Hello, World!"
-        actual_output="${{ steps.your_step_id.outputs.command_output }}"
+        actual_output="${{ steps.run_code.outputs.command_output }}"
         if [[ "$actual_output" == *"$expected_output"* ]]; then
           echo "Test passed: Output contains expected result"
         else
