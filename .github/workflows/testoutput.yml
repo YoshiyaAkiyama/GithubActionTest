@@ -28,6 +28,6 @@ jobs:
         if [[ "$actual_output" == *"$expected_output"* ]]; then
           echo "Test passed: Output contains expected result"
         else
-          echo "Test failed: Output does not contain expected result"
+          echo "Test failed: Output does not contain expected result, actually it was : $actual_output"
           exit 1
         fi
