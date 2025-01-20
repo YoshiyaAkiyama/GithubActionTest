@@ -16,7 +16,7 @@ jobs:
     - name: Create text file
       run: |
         output=$(python3 $GITHUB_WORKSPACE/hello_world.py)
-        echo output >> my_text.txt
+        echo $output >> my_text.txt
 
     - name: Upload artifact
       uses: actions/upload-artifact@v3
