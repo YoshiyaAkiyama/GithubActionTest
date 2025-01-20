@@ -16,7 +16,7 @@ jobs:
     - name: Run code
       id: run_code
       run: |
-        $($GITHUB_WORKSPACE/hello_world.py >> $GITHUB_OUTPUT
+        $($GITHUB_WORKSPACE/hello_world.py) >> $GITHUB_OUTPUT
     - name: Test output
       run: |
         expected_output="Hello World"
