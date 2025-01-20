@@ -16,7 +16,11 @@ jobs:
     - name: Run code
       id: run_code
       run: |
-        python3 $GITHUB_WORKSPACE/hello_world.py >> $GITHUB_OUTPUT
+        output=$(python3 $GITHUB_WORKSPACE/hello_world.py)
+        echo "command_output<<EOF" >> $GITHUB_OUTPUT
+        echo "$output" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+
     - name: Test output
       run: |
         expected_output="Hello World"
